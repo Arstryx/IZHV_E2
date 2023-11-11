@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     /// <summary>
     /// Velocity multiplier applied when jumping.
     /// </summary>
-    public float jumpVelocity = 100.0f;
+    public float jumpVelocity = 170.0f;
 
     /// <summary>
     /// Distance to which ground should be detected.
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     /// <summary>
     /// Speed of rotation animation in degrees.
     /// </summary>
-    public float rotationSpeed = 30.0f;
+    public float rotationSpeed = 50.0f;
 
     /// <summary>
     /// Which axes should be rotated?
@@ -203,6 +203,16 @@ public class Player : MonoBehaviour
             otherRB.velocity = -Physics.gravity;
             // Loose the game.
             GameManager.Instance.LooseGame();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        
+        
+        if (other.tag == "obstacle")
+        { 
+            Destroy(other.gameObject);
         }
     }
 }
